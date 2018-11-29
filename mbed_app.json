@@ -11,8 +11,7 @@
     },
     "target_overrides": {
         "*": {
-            "platform.stdio-convert-newlines": true,
-            "esp8266.provide-default" : true
+            "platform.stdio-convert-newlines": true
         },
         "MM": {
             "target.stdio_uart_tx": "MAIN_TX",
