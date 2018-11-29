@@ -36,6 +36,14 @@
 Serial uart_main(MAIN_TX, MAIN_RX, 115200);
 DigitalInOut cell_power_control(CELL_PWR_EN, PIN_OUTPUT, PullDown, 0);
 
+#if defined(MBED_CONF_APP_SWO_ENABLED) && (MBED_CONF_APP_SWO_ENABLED == 1)
+FileHandle *mbed::mbed_override_console(int fd)
+{
+    static SerialWireOutput swo_serial;
+    return &swo_serial;
+}
+#endif // MBED_CONF_APP_SWO_ENABLED
+
 int main()
 {
     int c;
